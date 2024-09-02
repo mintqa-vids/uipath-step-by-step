@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Employee Form</h2>
+        <form id="employeeForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+
+            <label for="empId">Emp ID:</label>
+            <input type="text" id="empId" name="empId" required><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="text" id="dob" name="dob" required placeholder="MM/DD/YYYY"><br><br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required><br><br>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required><br><br>
+
+            <label for="zip">ZIP Code:</label>
+            <input type="text" id="zip" name="zip" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Emp ID</th>
+                <th>Date of Birth</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZIP Code</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const empId = document.getElementById('empId').value;
+            const dob = document.getElementById('dob').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const zip = document.getElementById('zip').value;
+            const email = document.getElementById('email').value;
+
+            // Create a new row
+            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            const newRow = tableBody.insertRow();
+
+            newRow.insertCell(0).textContent = firstName;
+            newRow.insertCell(1).textContent = lastName;
+            newRow.insertCell(2).textContent = empId;
+            newRow.insertCell(3).textContent = dob;
+            newRow.insertCell(4).textContent = city;
+            newRow.insertCell(5).textContent = state;
+            newRow.insertCell(6).textContent = zip;
+            newRow.insertCell(7).textContent = email;
+
+            // Clear the form
+            document.getElementById('employeeForm').reset();
+        });
+    </script>
+</body>
+</html>
